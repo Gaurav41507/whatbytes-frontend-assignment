@@ -33,6 +33,7 @@ export default function ProductGrid() {
     lg:grid-cols-3
     lg:gap-x-[2.5rem]
     mb-[2.5rem]
+    items-start
                 "
             >
                 <ProductCard product={normalProducts[6]} />

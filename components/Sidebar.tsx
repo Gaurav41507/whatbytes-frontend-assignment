@@ -57,7 +57,7 @@ export default function Sidebar() {
                         {/* Current Value */}
                         <div className="mt-[0.5rem] flex justify-center">
                             <span className="text-[0.95rem] font-medium">
-                                ₹{price}
+                                ${price}
                             </span>
                         </div>
 

@@ -15,11 +15,12 @@ export default function FeaturedPhoneCard({
         <div
             className="
               w-full
-              rounded-[0.75rem]
-              bg-white
-              p-[1rem]
-              shadow-sm
-              md:p-[1.5rem]
+    min-h-[30rem]
+    rounded-[0.75rem]
+    bg-white
+    p-[1rem]
+    shadow-sm
+    md:p-[1.25rem]
             "
         >
             <div
@@ -27,7 +28,7 @@ export default function FeaturedPhoneCard({
       flex
       flex-col
       items-start
-      gap-[1rem]
+      gap-[0.8rem]
 
       md:flex-row
       md:items-start
@@ -43,8 +44,8 @@ export default function FeaturedPhoneCard({
         flex-shrink-0
 
         md:mx-0
-        md:h-[20rem]
-        md:w-[14rem]
+        md:h-[22rem]
+        md:w-[15rem]
       "
                 >
                     <Image
@@ -131,12 +132,12 @@ export default function FeaturedPhoneCard({
 
                     <button
                         className="
-              mt-[3.5rem]
+              mt-[5.5rem]
               w-full
               rounded-[0.5rem]
               bg-[#0058B6]
               py-[0.9rem]
-              text-[1rem]
+              text-[1.2rem]
               font-medium
               text-white
               transition

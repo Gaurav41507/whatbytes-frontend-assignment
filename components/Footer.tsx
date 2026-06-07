@@ -18,12 +18,13 @@ export default function Footer() {
             >
                 <div
                     className="
-            grid
-            grid-cols-1
-            gap-[2.5rem]
+             grid
+      grid-cols-1
+      gap-[3.5rem]
 
-            sm:grid-cols-2
-            lg:grid-cols-3
+      sm:grid-cols-2
+      lg:grid-cols-[1fr_1.2fr_1.2fr]
+      lg:gap-[5rem]
           "
                 >
                     {/* Filters Section */}
@@ -74,12 +75,13 @@ export default function Footer() {
                     </div>
 
                     {/* About Section */}
-                    <div>
+                    <div className="lg:ml-[5rem]">
                         <h3
                             className="
                 mb-[1.5rem]
                 text-[1.9rem]
                 font-semibold
+
               "
                         >
                             About Us
@@ -112,7 +114,7 @@ export default function Footer() {
                     </div>
 
                     {/* Social Section */}
-                    <div>
+                    <div className="lg:ml-[5rem]">
                         <h3
                             className="
                 mb-[1.5rem]
