@@ -127,21 +127,27 @@ export default function Footer() {
 
                         <div className="flex items-center gap-[1rem]">
                             <a
-                                href="#"
+                                href="https://www.facebook.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex h-[3rem] w-[3rem] items-center justify-center rounded-full bg-[#0B5FC1]"
                             >
                                 <FaFacebookF size={20} />
                             </a>
 
                             <a
-                                href="#"
+                                href="https://www.twitter.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex h-[3rem] w-[3rem] items-center justify-center rounded-full bg-[#0B5FC1]"
                             >
                                 <FaTwitter size={20} />
                             </a>
 
                             <a
-                                href="#"
+                                href="https://www.instagram.com"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="flex h-[3rem] w-[3rem] items-center justify-center rounded-full bg-[#0B5FC1]"
                             >
                                 <FaInstagram size={20} />
