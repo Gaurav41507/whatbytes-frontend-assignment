@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/types/product";
+import { useCart } from "@/context/CartContext";
 
 interface ProductCardProps {
     product: Product;
@@ -11,6 +12,8 @@ interface ProductCardProps {
 export default function ProductCard({
     product,
 }: ProductCardProps) {
+    const { addToCart } = useCart();
+
     return (
         <div
             className="
@@ -56,18 +59,26 @@ export default function ProductCard({
             </Link>
 
             <button
+                onClick={() =>
+                    addToCart({
+                        id: product.id,
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                    })
+                }
                 className="
-          mt-[0.75rem]
-          w-full
-          rounded-[0.5rem]
-          bg-[#0058B6]
-          py-[0.65rem]
-          text-[1.2rem]
-          font-medium
-          text-white
-          transition
-          hover:bg-[#00479a]
-        "
+      mt-[0.75rem]
+      w-full
+      rounded-[0.5rem]
+      bg-[#0058B6]
+      py-[0.65rem]
+      text-[1.2rem]
+      font-medium
+      text-white
+      transition
+      hover:bg-[#00479a]
+    "
             >
                 Add To Cart
             </button>

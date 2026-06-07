@@ -1,9 +1,12 @@
 "use client";
 
 import { Search, ShoppingCart } from 'lucide-react';
+import Link from "next/link";
+import { useCart } from "@/context/CartContext";
 
 
 export default function Header() {
+    const { totalItems } = useCart();
     return (
         <header className="w-full bg-[#0058B6]">
             <div className="mx-auto flex h-[5.5rem] w-full items-center justify-between px-[4%]">
@@ -48,7 +51,8 @@ export default function Header() {
 
                 {/* Cart Button */}
                 <div className="flex items-center">
-                    <button
+                    <Link
+                        href="/cart"
                         className="
     flex
     h-[3.25rem]
@@ -70,11 +74,33 @@ export default function Header() {
                         <div className="relative">
                             <ShoppingCart />
 
-
+                            {totalItems > 0 && (
+                                <span
+                                    className="
+                absolute
+                -right-[0.45rem]
+                -top-[0.45rem]
+                flex
+                h-[1.2rem]
+                w-[1.2rem]
+                items-center
+                justify-center
+                rounded-full
+                bg-red-500
+                text-[0.7rem]
+                font-bold
+                text-white
+            "
+                                >
+                                    {totalItems}
+                                </span>
+                            )}
                         </div>
 
-                        <span className="text-[1.3rem] font-semibold">Cart</span>
-                    </button>
+                        <span className="hidden md:block text-[1.3rem] font-semibold">
+                            Cart
+                        </span>
+                    </Link>
                 </div>
             </div>
 

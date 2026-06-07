@@ -4,6 +4,7 @@ import Image from "next/image";
 import { Star } from "lucide-react";
 import { Product } from "@/types/product";
 import Link from "next/link";
+import { useCart } from "@/context/CartContext";
 
 interface FeaturedPhoneCardProps {
     product: Product;
@@ -12,6 +13,8 @@ interface FeaturedPhoneCardProps {
 export default function FeaturedPhoneCard({
     product,
 }: FeaturedPhoneCardProps) {
+    const { addToCart } = useCart();
+
     return (
         <div
             className="
@@ -139,19 +142,27 @@ export default function FeaturedPhoneCard({
                     </div>
 
                     <button
+                        onClick={() =>
+                            addToCart({
+                                id: product.id,
+                                title: product.title,
+                                price: product.price,
+                                image: product.image,
+                            })
+                        }
                         className="
-              mt-[5.5rem]
-              w-full
-              rounded-[0.5rem]
-              bg-[#0058B6]
-              py-[0.9rem]
-              text-[1.2rem]
-              font-medium
-              text-white
-              transition
-              hover:bg-[#00489A]
-              md:max-w-[18rem]
-            "
+      mt-[5.5rem]
+      w-full
+      rounded-[0.5rem]
+      bg-[#0058B6]
+      py-[0.9rem]
+      text-[1.2rem]
+      font-medium
+      text-white
+      transition
+      hover:bg-[#00489A]
+      md:max-w-[18rem]
+    "
                     >
                         Add To Cart
                     </button>
