@@ -4,6 +4,7 @@ import { products } from "@/data/products";
 import Image from "next/image";
 import Link from "next/link";
 import { Star } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 interface ProductDetailsProps {
     id: number;
@@ -12,6 +13,7 @@ interface ProductDetailsProps {
 export default function ProductDetails({
     id,
 }: ProductDetailsProps) {
+    const { addToCart } = useCart();
     const product = products.find(
         (item) => item.id === id
     );
@@ -151,16 +153,24 @@ export default function ProductDetails({
                     </div>
 
                     <button
+                        onClick={() =>
+                            addToCart({
+                                id: product.id,
+                                title: product.title,
+                                price: product.price,
+                                image: product.image,
+                            })
+                        }
                         className="
-              mt-[2rem]
-              rounded-[0.5rem]
-              bg-[#0058B6]
-              px-[2rem]
-              py-[0.9rem]
-              text-white
-              transition
-              hover:bg-[#00489A]
-            "
+        mt-[2rem]
+        rounded-[0.5rem]
+        bg-[#0058B6]
+        px-[2rem]
+        py-[0.9rem]
+        text-white
+        transition
+        hover:bg-[#00489A]
+    "
                     >
                         Add To Cart
                     </button>
