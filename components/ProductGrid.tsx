@@ -6,12 +6,41 @@ import { products } from "@/data/products";
 import { useFilters } from "@/context/FilterContext";
 
 export default function ProductGrid() {
-    const { search } = useFilters();
+    const {
+        search,
+        category,
+        minPrice,
+        maxPrice,
+    } = useFilters();
 
-    const filteredProducts = products.filter((product) =>
-        product.title
-            .toLowerCase()
-            .includes(search.toLowerCase())
+    console.log({
+        search,
+        category,
+        maxPrice,
+    });
+
+    const filteredProducts = products.filter(
+        (product) => {
+            const matchesSearch =
+                product.title
+                    .toLowerCase()
+                    .includes(search.toLowerCase());
+
+            const matchesCategory =
+                category === "All"
+                    ? true
+                    : product.category === category;
+
+            const matchesPrice =
+                product.price >= minPrice &&
+                product.price <= maxPrice;
+
+            return (
+                matchesSearch &&
+                matchesCategory &&
+                matchesPrice
+            );
+        }
     );
 
     const normalProducts = filteredProducts.slice(0, 7);

@@ -14,6 +14,9 @@ interface FilterContextType {
     category: string;
     setCategory: (value: string) => void;
 
+    minPrice: number;
+    setMinPrice: (value: number) => void;
+
     maxPrice: number;
     setMaxPrice: (value: number) => void;
 }
@@ -29,6 +32,7 @@ export function FilterProvider({
 }) {
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("All");
+    const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(1000);
 
     return (
@@ -38,6 +42,8 @@ export function FilterProvider({
                 setSearch,
                 category,
                 setCategory,
+                minPrice,
+                setMinPrice,
                 maxPrice,
                 setMaxPrice,
             }}

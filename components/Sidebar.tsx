@@ -1,9 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useFilters } from "@/context/FilterContext";
+import { Range } from "react-range";
 
 export default function Sidebar() {
-    const [price, setPrice] = useState(0);
+    const {
+        category,
+        setCategory,
+        minPrice,
+        maxPrice,
+        setMinPrice,
+        setMaxPrice,
+    } = useFilters();
 
     return (
         <aside className="w-full lg:max-w-[16rem]">
@@ -21,7 +30,7 @@ export default function Sidebar() {
                         </h3>
 
                         <div className="space-y-[0.75rem]">
-                            {["All", "Electronics", "Clothing", "Home"].map((item) => (
+                            {["All", "Electronics", "Clothing", "Accessories"].map((item) => (
                                 <label
                                     key={item}
                                     className="flex cursor-pointer items-center gap-[0.75rem]"
@@ -29,8 +38,18 @@ export default function Sidebar() {
                                     <input
                                         type="radio"
                                         name="category1"
-                                        defaultChecked={item === "All"}
-                                        className="h-[1rem] w-[1rem] accent-white"
+                                        checked={category === item}
+                                        onChange={() => setCategory(item)}
+                                        className="
+                                            h-[1.25rem]
+                                            w-[1.25rem]
+                                            appearance-none
+                                            rounded-full
+                                            border-1
+                                            border-white
+                                            bg-transparent
+                                            checked:border-[4px]
+                                            checked:border-white"
                                     />
 
                                     <span className="text-[1rem]">{item}</span>
@@ -45,26 +64,35 @@ export default function Sidebar() {
                             Price
                         </h3>
 
-                        <input
-                            type="range"
-                            min="0"
-                            max="1000"
-                            value={price}
-                            onChange={(e) => setPrice(Number(e.target.value))}
-                            className="custom-range w-full cursor-pointer"
+                        <Range
+                            step={10}
+                            min={0}
+                            max={1000}
+                            values={[minPrice, maxPrice]}
+                            onChange={(values) => {
+                                setMinPrice(values[0]);
+                                setMaxPrice(values[1]);
+                            }}
+                            renderTrack={({ props, children }) => (
+                                <div
+                                    {...props}
+                                    className="h-[4px] w-full rounded-full bg-white/40"
+                                >
+                                    {children}
+                                </div>
+                            )}
+                            renderThumb={({ props: { key, ...props } }) => (
+                                <div
+                                    key={key}
+                                    {...props}
+                                    className="h-5 w-5 rounded-full border-2 border-white bg-white shadow"
+                                />
+                            )}
                         />
 
-                        {/* Current Value */}
-                        <div className="mt-[0.5rem] flex justify-center">
-                            <span className="text-[0.95rem] font-medium">
-                                ${price}
-                            </span>
-                        </div>
-
-                        {/* Min Max */}
-                        <div className="mt-[0.35rem] flex justify-between text-[1rem]">
-                            <span>0</span>
-                            <span>1000</span>
+                        <div className="mt-4 flex justify-between text-[1rem]">
+                            <span>${minPrice}</span>
+                            <span>${maxPrice}</span>
                         </div>
                     </div>
                 </div>
@@ -76,7 +104,7 @@ export default function Sidebar() {
                     </h2>
 
                     <div className="space-y-[0.75rem]">
-                        {["All", "Electronics", "Clothing", "Home"].map((item) => (
+                        {["All", "Electronics", "Clothing", "Accessories"].map((item) => (
                             <label
                                 key={item}
                                 className="flex cursor-pointer items-center gap-[0.75rem]"
@@ -84,8 +112,18 @@ export default function Sidebar() {
                                 <input
                                     type="radio"
                                     name="category2"
-                                    defaultChecked={item === "All"}
-                                    className="h-[1rem] w-[1rem] accent-blue-600"
+                                    checked={category === item}
+                                    onChange={() => setCategory(item)}
+                                    className="
+                                        h-[1.35rem]
+                                        w-[1.35rem]
+                                        appearance-none
+                                        rounded-full
+                                        border-2
+                                        border-[#2563EB]
+                                        bg-white
+                                        checked:border-[5px]
+                                        checked:border-[#2563EB]"
                                 />
 
                                 <span className="text-[1rem] text-[#374151]">

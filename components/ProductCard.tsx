@@ -60,6 +60,7 @@ export default function ProductCard({
 
             <button
                 onClick={() =>
+
                     addToCart({
                         id: product.id,
                         title: product.title,
