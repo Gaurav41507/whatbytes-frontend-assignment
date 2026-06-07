@@ -3,6 +3,12 @@
 import { useState } from "react";
 import { useFilters } from "@/context/FilterContext";
 import { Range } from "react-range";
+import {
+    useRouter,
+    useSearchParams,
+} from "next/navigation";
+
+import { useEffect } from "react";
 
 export default function Sidebar() {
     const {
@@ -13,6 +19,23 @@ export default function Sidebar() {
         setMinPrice,
         setMaxPrice,
     } = useFilters();
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    useEffect(() => {
+        const urlCategory =
+            searchParams.get("category");
+
+        const urlPrice =
+            searchParams.get("price");
+
+        if (urlCategory) {
+            setCategory(urlCategory);
+        }
+
+        if (urlPrice) {
+            setMaxPrice(Number(urlPrice));
+        }
+    }, [searchParams, setCategory, setMaxPrice]);
 
     return (
         <aside className="w-full lg:max-w-[16rem]">
@@ -39,8 +62,13 @@ export default function Sidebar() {
                                         type="radio"
                                         name="category1"
                                         checked={category === item}
-                                        onChange={() => setCategory(item)}
-                                        className="
+                                        onChange={() => {
+                                            setCategory(item);
+
+                                            router.push(
+                                                `/?category=${item}&price=${maxPrice}`
+                                            );
+                                        }} className="
                                             h-[1.25rem]
                                             w-[1.25rem]
                                             appearance-none
@@ -72,6 +100,10 @@ export default function Sidebar() {
                             onChange={(values) => {
                                 setMinPrice(values[0]);
                                 setMaxPrice(values[1]);
+
+                                router.push(
+                                    `/?category=${category}&price=${values[1]}`
+                                );
                             }}
                             renderTrack={({ props, children }) => (
                                 <div
