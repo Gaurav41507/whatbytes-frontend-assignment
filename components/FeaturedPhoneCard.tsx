@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Star } from "lucide-react";
 import { Product } from "@/types/product";
+import Link from "next/link";
 
 interface FeaturedPhoneCardProps {
     product: Product;
@@ -35,18 +36,20 @@ export default function FeaturedPhoneCard({
     "
             >
                 {/* Phone Image */}
-                <div
+                <Link
+                    href={`/product/${product.id}`}
                     className="
-        relative
-        mx-auto
-        h-[16rem]
-        w-[10rem]
-        flex-shrink-0
+    relative
+    mx-auto
+    h-[16rem]
+    w-[10rem]
+    flex-shrink-0
+    block
 
-        md:mx-0
-        md:h-[22rem]
-        md:w-[15rem]
-      "
+    md:mx-0
+    md:h-[22rem]
+    md:w-[15rem]
+  "
                 >
                     <Image
                         src={product.image}
@@ -55,21 +58,26 @@ export default function FeaturedPhoneCard({
                         className="object-contain"
                         priority
                     />
-                </div>
+                </Link>
 
                 {/* Content */}
                 <div className="flex w-full flex-1 flex-col justify-center">
-                    <h2
-                        className="
-          text-[1.8rem]
-          font-bold
-          text-[#111827]
+                    <Link href={`/product/${product.id}`}>
+                        <h2
+                            className="
+      text-[1.8rem]
+      font-bold
+      text-[#111827]
+      transition
+      hover:text-[#0058B6]
+      cursor-pointer
 
-          md:text-[2.2rem]
-        "
-                    >
-                        {product.title}
-                    </h2>
+      md:text-[2.2rem]
+    "
+                        >
+                            {product.title}
+                        </h2>
+                    </Link>
 
                     <p
                         className="
