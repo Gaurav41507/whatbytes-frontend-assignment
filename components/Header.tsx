@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, ShoppingCart } from 'lucide-react';
+import { Search, ShoppingCart, UserCircle } from 'lucide-react';
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
 import { useFilters } from "@/context/FilterContext";
@@ -56,7 +56,7 @@ export default function Header() {
                 </div>
 
                 {/* Cart Button */}
-                <div className="flex items-center">
+                <div className="flex items-center gap-[2rem]">
                     <Link
                         href="/cart"
                         className="
@@ -107,6 +107,23 @@ export default function Header() {
                             Cart
                         </span>
                     </Link>
+
+                    <div
+                        className="
+        flex
+        h-[3.25rem]
+        w-[3.25rem]
+        items-center
+        justify-center
+        rounded-[0.875rem]
+        text-white
+        transition
+        md:h-[3.75rem]
+        md:w-[3.75rem]
+    "
+                    >
+                        <UserCircle size={40} />
+                    </div>
                 </div>
             </div>
 
