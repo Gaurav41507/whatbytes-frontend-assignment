@@ -132,7 +132,7 @@ export default function Footer() {
                                 rel="noopener noreferrer"
                                 className="flex h-[3rem] w-[3rem] items-center justify-center rounded-full bg-[#0B5FC1]"
                             >
-                                <FaFacebookF size={20} />
+                                <FaFacebookF size={21} />
                             </a>
 
                             <a
@@ -141,7 +141,7 @@ export default function Footer() {
                                 rel="noopener noreferrer"
                                 className="flex h-[3rem] w-[3rem] items-center justify-center rounded-full bg-[#0B5FC1]"
                             >
-                                <FaTwitter size={20} />
+                                <FaTwitter size={21} />
                             </a>
 
                             <a
@@ -150,7 +150,7 @@ export default function Footer() {
                                 rel="noopener noreferrer"
                                 className="flex h-[3rem] w-[3rem] items-center justify-center rounded-full bg-[#0B5FC1]"
                             >
-                                <FaInstagram size={20} />
+                                <FaInstagram size={21} />
                             </a>
                         </div>
                     </div>
