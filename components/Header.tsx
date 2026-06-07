@@ -3,10 +3,12 @@
 import { Search, ShoppingCart } from 'lucide-react';
 import Link from "next/link";
 import { useCart } from "@/context/CartContext";
+import { useFilters } from "@/context/FilterContext";
 
 
 export default function Header() {
     const { totalItems } = useCart();
+    const { search, setSearch } = useFilters();
     return (
         <header className="w-full bg-[#0058B6]">
             <div className="mx-auto flex h-[5.5rem] w-full items-center justify-between px-[4%]">
@@ -27,6 +29,10 @@ export default function Header() {
 
                         <input
                             type="text"
+                            value={search}
+                            onChange={(e) =>
+                                setSearch(e.target.value)
+                            }
                             placeholder="Search for products..."
                             className="
                 h-[3.75rem]
@@ -114,6 +120,10 @@ export default function Header() {
 
                     <input
                         type="text"
+                        value={search}
+                        onChange={(e) =>
+                            setSearch(e.target.value)
+                        }
                         placeholder="Search for products..."
                         className="
               h-[3.25rem]
